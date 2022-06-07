@@ -3,8 +3,8 @@ name: Setting Go Cache
 
 on:
   workflow_call:
-    secrets:
-      PACKAGES_TOKEN:
+    inputs:
+      GIT_TOKEN:
         required: true
 
 
@@ -35,4 +35,4 @@ jobs:
 
       - name: Configure git credentials
         run: |
-          git config --global url.https://${{ secrets.PACKAGES_TOKEN }}@github.com/.insteadOf https://github.com/
+          git config --global url.https://${{ inputs.GIT_TOKEN }}@github.com/.insteadOf https://github.com/
